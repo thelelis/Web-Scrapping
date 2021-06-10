@@ -21,7 +21,7 @@ for pais in table.find_all('tbody'):
     for row in rows:
         nome = row.find_all('td')[1].text
         pop = row.find_all('td')[2].text
-        #print(nome, pop)
+        print(nome, pop)
 
 #JOGAR DADOS EM CSV/EXCEL
 
