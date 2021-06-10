@@ -9,15 +9,18 @@ import time
 url = 'https://pt.wikipedia.org/wiki/Lista_de_pa%C3%ADses_da_Am%C3%A9rica_por_popula%C3%A7%C3%A3o'
 response = requests.get(url)
 soup = BeautifulSoup(response.text, 'html.parser')
+
 #BUSCAR NOME E HABITANTES
 
 table = soup.find('table', {'class': 'wikitable sortable'})
 
+
 for pais in table.find_all('tbody'):
     rows = pais.find_all('tr')
     for row in rows:
-        nome = row.find_all('td').text
-        print(nome)
+        nome = row.find_all('td')[1].text
+        pop = row.find_all('td')[2].text
+        print(nome, pop)
  
 
 
