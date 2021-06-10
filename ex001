@@ -1,0 +1,16 @@
+import requests
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from bs4 import BeautifulSoup
+import pandas as pd
+import time
+
+path = 'C:\Program Files (x86)\chromedriver.exe'
+url = 'http://www.yahii.com.br/inpc.html'
+response = requests.get(url)
+soup = BeautifulSoup(response.text, 'html.parser')
+
+table = soup.findAll('table')[0].findAll('tr')
+rows = soup.findAll('table')[0].findAll('tr')
+columns = [v.text.replace('\n', '') for v in rows[0].find_all('th')]
+
